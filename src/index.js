@@ -1,2 +1,7 @@
-import './css/style.css';
-import './js/app'
+import "./styles.css";
+import Game from "./game";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const game = new Game();
+  game.init();
+});
