@@ -1,4 +1,4 @@
-name: events
+name: 2.DOM
 
 on:
   push:
@@ -47,7 +47,7 @@ jobs:
     needs: [eslint, test]
 
     environment:
-      name: github
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
