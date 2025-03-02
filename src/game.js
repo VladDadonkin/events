@@ -31,13 +31,13 @@ export default class Game {
     if (cell.contains(this.goblin.element)) {
       this.score.increment();
       this.goblin.remove();
+      this.goblin.isHit = true; // Фиксируем, что гоблина поймали
     }
   }
 
   gameLoop() {
     setInterval(() => {
-      this.goblin.move(this.cells);
-      if (!this.goblin.isHit) {
+      if (!this.goblin.isHit) { // Проверяем, был ли прошлый гоблин пойман
         this.misses++;
         document.getElementById("misses").textContent = this.misses;
         if (this.misses >= 5) {
@@ -45,6 +45,9 @@ export default class Game {
           location.reload();
         }
       }
+
+      this.goblin.move(this.cells);
+      this.goblin.isHit = false; // Сбрасываем флаг после перемещения
     }, 1000);
   }
 }
